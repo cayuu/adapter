@@ -1,0 +1,15 @@
+{
+  "name": "adapter",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Abstract adapter class",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "1.12.x",
+    "expect.js": "0.2.x",
+    "grunt": "0.4.x",
+    "grunt-contrib-jshint": "0.6.x",
+    "grunt-contrib-watch": "0.4.x",
+    "grunt-component-build": "~0.3.2"
+  }
+}

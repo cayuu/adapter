@@ -1,0 +1,13 @@
+{
+  "name": "adapter",
+  "repo": "cayuu/adapter",
+  "description": "Abstract adapter class",
+  "version": "0.0.0",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "main": "lib/index.js",
+  "scripts": [
+    "lib/index.js"
+  ]
+}

@@ -25,7 +25,7 @@ module.exports = function( grunt ) {
     },
 
     component_build: {
-      build: {
+      adapter: {
         // Output directory
         output: './build',
         scripts: true,
@@ -38,13 +38,13 @@ module.exports = function( grunt ) {
     watch:
     {
       files: [grunt.config.get('files')],
-      tasks: ['jshint']
+      tasks: ['jshint', 'component_build']
     }
 
   });
 
   // Default task(s)
-  grunt.registerTask('default', ['jshint']);
+  grunt.registerTask('default', ['jshint', 'component_build']);
   grunt.registerTask('lint', ['jshint']);
 
 };

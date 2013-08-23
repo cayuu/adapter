@@ -1,6 +1,6 @@
 {
-  "name": "adapter",
-  "repo": "cayuu/adapter",
+  "name": "mekanika-adapter",
+  "repo": "mekanika/adapter",
   "description": "Abstract adapter class",
   "version": "0.0.0",
   "keywords": [],

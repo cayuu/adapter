@@ -16,6 +16,12 @@ describe('Adapter class', function () {
       expect( a.identity ).to.be( '!' );
     });
 
+    it('provides an empty .config object property', function () {
+      var a = new Adapter('!');
+      expect( a.config ).to.be.an( Object );
+      expect( a.config ).to.be.empty();
+    });
+
     it('.toString() should return accessor `adapter($id)`', function () {
       var a = new Adapter(':)');
       expect( a.toString() ).to.be( "adapter(':)')" );

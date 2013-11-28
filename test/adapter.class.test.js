@@ -23,4 +23,19 @@ describe('Adapter class', function () {
 
   });
 
+
+  describe('EventEmitter', function () {
+
+    it('exposes EventEmitter class', function () {
+      expect( new Adapter.EventEmitter() ).to.be.an( Adapter.EventEmitter );
+    });
+
+    it('adapter instances are EventEmitters', function () {
+      var a = new Adapter('!');
+      expect( a ).to.be.an( Adapter.EventEmitter );
+    });
+
+  });
+
+
 });

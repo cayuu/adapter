@@ -1,28 +1,31 @@
 REPORTER = spec
-
-build: lint test
+TESTFILES = $(shell find test/ -name '*.test.js')
 
 install:
 	@echo "Installing production"
 	@npm install --production
 	@echo "Install complete"
 
-lint:
-	@echo "\n\n\nLinting.."
-	@jshint --config .jshintrc lib/*.js
+build: lint
+	@NODE_ENV=test mocha --reporter dot $(TESTFILES)
 
 test:
-	@echo "Testing.."
 	@NODE_ENV=test ./node_modules/.bin/mocha \
 		--reporter $(REPORTER) \
-		test/runner.js
+		$(TESTFILES)
+
+lint:
+	@echo "Linting..."
+	@./node_modules/jshint/bin/jshint \
+		--config .jshintrc \
+		lib/*.js test/*.js
 
 coverage:
 	@echo "Generating coverage report.."
 	@NODE_ENV=test ./node_modules/.bin/mocha \
 		--require blanket \
-		test/runner.js \
+		$(TESTFILES) \
 		--reporter html-cov > coverage.html
 	@echo "Done: ./coverage.html"
 
-.PHONY: test
+.PHONY: install lint test coverage

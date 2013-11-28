@@ -1,8 +1,8 @@
 {
   "name": "mekanika-adapter",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": false,
-  "description": "Abstract adapter class",
+  "description": "Abstract mekanika adapter class",
   "main": "lib/index.js",
   "repository": {
     "type": "git",

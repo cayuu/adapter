@@ -8,7 +8,7 @@ An abstract adapter class for mekanika adapters.
 
 `adapter` is a method for instantiating new **Adapter** classes, and returning those adapter instances from an internal cache once declared.
 
-Adapters are designed to map [query request objects](https://github.com/mekanika/query/blob/master/docs/object.reference.md) to a given service (such as a REST API, a database, a filesystem, etc).
+Adapters are designed to map [**Qo** - Query objects](https://github.com/mekanika/qo) to a given service (such as a REST API, a database, a filesystem, etc).
 
 ### Usage
 
@@ -35,7 +35,7 @@ All adapters declared using the `adapter( name )` format are stored in the `adap
 
 Adapters map a query request object to corresponding actions of a particular service. To do this, adapters must implement an `.exec( query, cb )` method that:
 
-  - parses the [`query` object](https://github.com/mekanika/query/blob/master/docs/object.reference.md)
+  - parses the [**Qo** - Query object](https://github.com/mekanika/qo)
   - Maps the query request to some action (ie. do something)
   - then runs the `cb` callback passing `cb( err, res )`
       - `err`: Error object or `null`

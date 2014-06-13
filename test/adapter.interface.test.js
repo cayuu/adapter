@@ -23,6 +23,12 @@ describe('adapter() interface', function () {
 
     beforeEach( function () { adapter.reset(); } );
 
+    it('.new( name ) creates a new adapter instance', function () {
+      var a = adapter.new( '!' );
+      expect( adapter.list() ).to.have.length( 1 );
+      expect( adapter('!') ).to.be( a );
+    });
+
     it('.list() returns array of keys of cached adapters', function () {
       expect( adapter.list() ).to.be.empty();
       adapter(':)');

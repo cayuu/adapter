@@ -40,6 +40,17 @@ describe('adapter() interface', function () {
       expect( adapter.list() ).to.have.length( 0 );
     });
 
+    it('.remove(id) deletes `id` adapter from cache', function () {
+      var a = adapter('!');
+      expect( adapter.list() ).to.have.length( 1 );
+      expect( adapter.remove('!') ).to.be( true );
+      expect( adapter.list() ).to.have.length( 0 );
+    });
+
+    it('.remove(id) returns false when no delete', function () {
+      expect( adapter.remove('random') ).to.be( false );
+    });
+
     it('alias .flush() to .reset()', function () {
       expect( adapter.flush ).to.be( adapter.reset );
     });

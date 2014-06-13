@@ -58,12 +58,21 @@ var moo = adapter( 'moo' );
 
 - **exec()** - Stub that throws `Error('Not implemented')`
 
+#### Inherited methods
 
+All Adapters are **EventEmitters** (based on [EventEmitter2](https://github.com/hij1nx/EventEmitter2))
 
 
 ## Installation
 
     npm install --production
+
+For development, requires globally installed:
+
+- mocha
+- browserify
+- jshint
+- istanbul
 
 
 ## License

@@ -8,7 +8,9 @@ An abstract adapter class for mekanika adapters.
 
 `adapter` is a method for instantiating new **Adapter** classes, and returning those adapter instances from an internal cache once declared.
 
-Adapters are designed to map [**Qo** - Query objects](https://github.com/mekanika/qo) to a given service (such as a REST API, a database, a filesystem, etc).
+Adapters are designed to map [**Qo** - Query objects](https://github.com/mekanika/qo) to a given service (such as a REST API, a database, a filesystem, etc). Typically they will sit on top of a service _driver_, and do little more than error check the **Qo** and translate it into a format the _driver_ can process, finally passing `(err, res)` back to the callback.
+
+Adapters should by definition be extremely lightweight. Their only 'smart' is their translation layer between Qo and driver APIs. In exceptional circumstances where a driver API is significantly simpler than the default set of Qo actions, an adapter may implement Qo actions via the driver API.
 
 ### Usage
 

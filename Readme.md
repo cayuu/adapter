@@ -12,6 +12,9 @@ Adapters are designed to map [**Qo** - Query objects](https://github.com/mekanik
 
 Adapters should by definition be extremely lightweight. Their only 'smart' is their translation layer between Qo and driver APIs. In exceptional circumstances where a driver API is significantly simpler than the default set of Qo actions, an adapter may implement Qo actions via the driver API.
 
+In general an adapter will map as much of the Qo specification that is natively supported by the underlying driver.
+
+
 ### Usage
 
 New Adapters are instantiated as follows:
@@ -24,12 +27,13 @@ New Adapters are instantiated as follows:
 
 ### adapter cache (statics)
 
-All adapters declared using the `adapter( name )` format are stored in the `adapter` cache.
+All adapters can be retrieved using the `adapter( name )` format, and are stored in the `adapter` cache.
 
 `adapter` has the following static methods:
 
   - **.list()** - list all declared adapter keys
   - **.has( id )** - boolean existence for an adapter
+  - **.remove( id )** - removes an adapter from the cache
   - **.reset()** - flush the cache
 
 

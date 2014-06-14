@@ -17,7 +17,7 @@ Adapters should by definition be extremely lightweight. Their only 'smart' is th
 New Adapters are instantiated as follows:
 
 ```js
-  var myadapter = adapter('myadapter');
+  var myadapter = adapter.new( 'myadapter', defaultConfig );
   // adapter('myadapter') instanceof adapter.Adapter
   // -> true
 ```
@@ -48,8 +48,8 @@ Adapters map a query request object to corresponding actions of a particular ser
 The initial `Adapter` class is very simple:
 
 ```js
-var moo = adapter( 'moo' );
-// -> { identity: 'moo' }
+var moo = adapter.new( 'moo', {prop: true} );
+// -> { identity: 'moo', config: {prop: true} }
 ```
 
 #### Prototype properties

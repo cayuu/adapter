@@ -22,6 +22,11 @@ describe('Adapter class', function () {
       expect( a.config ).to.be.empty();
     });
 
+    it('can apply a config object as Adapter configuration', function () {
+      var a = new Adapter('!', {cool:true});
+      expect( a.config.cool ).to.be( true );
+    });
+
     it('.toString() should return accessor `adapter($id)`', function () {
       var a = new Adapter(':)');
       expect( a.toString() ).to.be( "adapter(':)')" );

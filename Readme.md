@@ -49,6 +49,8 @@ Adapters map a query request object to corresponding actions of a particular ser
 
 ### Adapter Class
 
+All Adapters are **EventEmitters** (based on [EventEmitter2](https://github.com/hij1nx/EventEmitter2))
+
 The initial `Adapter` class is very simple:
 
 ```js
@@ -56,17 +58,51 @@ var moo = adapter.new( 'moo', {prop: true} );
 // -> { identity: 'moo', config: {prop: true} }
 ```
 
-#### Prototype properties
+**On the Prototype**
 
 - **config** - Empty `{}` object (used to store config)
-
-#### Prototype methods
-
 - **exec()** - Stub that throws `Error('Not implemented')`
 
-#### Inherited methods
+### Implementing `.exec( query, cb )`
 
-All Adapters are **EventEmitters** (based on [EventEmitter2](https://github.com/hij1nx/EventEmitter2))
+#### Action: **Find**
+
+Two paths for finding records, either via:
+
+**Identifiers**
+
+- List of ids to 'find' `{identifiers: ['xyz']}`
+
+**Constraints**
+
+- WHERE field OPERATOR $value `[{field:'name', operator:'eq', condition:'joe'}]`
+
+
+
+#### Action: **Update**
+
+There are two (independent) update paths, updating via either/or:
+
+**Modifiers**
+
+- SET field to VALUE `{set: $field, value: $value}`
+- INCR field by AMOUNT `{inc: $field, value: $value}` (can be negative)
+
+**Content**
+
+- Content to modify `content: [ {vip: true} ]`
+
+Where multiple `identifiers` are set, the content or modifiers should be applied to all ids. If no identifiers are set, the update will be applied to `where` conditions, eg:
+
+```js
+{
+  action: 'update',
+  resource: 'users',
+  modifiers: [{set:'vip', value: true}],
+  where: [{field:'points', operator:'gte', constraint:500}]
+}
+// Sets 'vip' to true on users who have points >= 500
+```
 
 
 ## Installation
